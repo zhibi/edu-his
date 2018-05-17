@@ -1,0 +1,74 @@
+buildscript{
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+    }
+}
+
+//插件配置
+plugins {
+    id 'java'
+    id 'idea'
+    id 'war'
+    id "org.springframework.boot" version "2.0.0.RELEASE"
+    id "io.spring.dependency-management" version "1.0.5.RELEASE"
+}
+group 'school'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+//配置版本号
+ext {
+    ver = [
+            "spring_boot":            "2.0.0.RELEASE",
+            "spring_boot_freemarker": "2.0.0.RELEASE",
+            "mysql":                  "5.1.24",
+            "druid":                  "1.1.9",
+            "mybatis_spring_boot":    "1.3.2",
+            "mapper_spring_boot":     "2.0.0",
+            "pagehelper_spring_boot": "1.2.5",
+            "zhibi_utils":            "1.0",
+            "zhibi_frame":            "1.2",
+            "zhibi_commons":          "1.0",
+
+
+    ]
+}
+
+//仓库地址
+repositories {
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/plugins-release" }
+}
+
+//版本依赖库
+dependencies {
+
+    //springBoot
+    compile "org.springframework.boot:spring-boot-starter:$ver.spring_boot"
+    compile "org.springframework.boot:spring-boot-starter-web:$ver.spring_boot"
+
+    //mybatis springBoot
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:$ver.mybatis_spring_boot"
+    compile "tk.mybatis:mapper-spring-boot-starter:$ver.mapper_spring_boot"
+    compile "com.github.pagehelper:pagehelper-spring-boot-starter:$ver.pagehelper_spring_boot"
+
+
+    //mysql springBoot
+    runtime "mysql:mysql-connector-java:$ver.mysql"
+    compile "com.alibaba:druid-spring-boot-starter:$ver.druid"
+
+    //freemarker springBoot
+    compile "org.springframework.boot:spring-boot-starter-freemarker:$ver.spring_boot_freemarker"
+
+    //zhibi
+    compile "zhibi:zhibi-utils:$ver.zhibi_utils"
+    compile "zhibi:zhibi-commons:$ver.zhibi_commons"
+    compile "zhibi:zhibi-frame:$ver.zhibi_frame"
+
+}

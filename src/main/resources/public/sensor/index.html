@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>血氧血压</title>
+
+    <!-- 引入 echarts.js -->
+
+	 <script type="text/javascript" src="echarts.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="main" style="width:1000px; height: 550px;"></div>
+
+    <script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+		option = {
+			title: {
+				text: '血氧正常范围90%—100%,血压正常范围80—120',
+			//	subtext: '模拟数据'
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'cross',
+					label: {
+						backgroundColor: '#283b56'
+            }
+        }
+    },
+    legend: {
+        data:['血氧', '血压']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataView: {readOnly: false},
+           // restore: {},
+            saveAsImage: {}
+        }
+    },
+    dataZoom: {
+        show: false,
+        start: 0,
+        end: 100
+    },
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: true,
+            data: (function (){
+                var now = new Date();
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                    now = new Date(now - 2000);
+                }
+                return res;
+            })()
+        },
+        
+        {
+            type: 'category',
+            boundaryGap: true,
+           
+            data: (function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(10 - len - 1);
+                }
+                return res;
+            })()
+        },
+          
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            scale: true,
+            name: '—血氧数值（%）',
+            max: 200,
+            min: 0,
+            boundaryGap: [0.2, 0.2],
+   
+        },
+        {
+            type: 'value',
+            scale: true,
+            name: '—血压数值（次）',
+            max: 200,
+            min: 0,
+            boundaryGap: [0.2, 0.2]
+        }
+    ],
+    series: [
+        {
+            name:'血压',
+            type:'bar',
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 40 + 90));
+                }
+                return res;
+              
+            })()
+        },
+       
+         
+        {
+            name:'血氧',
+            type:'line',
+            data:(function (){
+                var res = [];
+                var len = 0;
+                while (len < 10) {
+                    res.push((Math.random()*10 + 85).toFixed(1) - 0);
+                    len++;
+                }
+                return res;
+      
+            })()
+        },
+        
+    ]
+};
+
+var app= 10;
+setInterval(function (){
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+
+    var data0 = option.series[0].data;
+    var data1 = option.series[1].data;
+
+    var a=data0.shift();
+   	data0.push(Math.round(Math.random() * 40 +  90));
+  
+    var b= data1.shift();
+    data1.push((Math.random() *10 + 85).toFixed(1) - 0);
+	
+   	option.xAxis[0].data.shift();
+    option.xAxis[0].data.push(axisData);
+   	option.xAxis[1].data.shift();
+    option.xAxis[1].data.push(app++);
+     if(a>120){
+    	alert("血压数据超过120！");//在页面上弹出上联
+    }
+    else if(a<80){
+    	alert("血压数据低于80！");//在页面上弹出上联
+    }
+    if(b<90){
+    	alert("血氧数据超出正常值！");//在页面上弹出上联
+    }
+  	
+    myChart.setOption(option);}, 2100);
+
+       // 使用刚指定的配置项和数据显示图表
+
+      //  myChart.setOption(option);
+
+	
+    </script>
+
+</body>
+
+</html>

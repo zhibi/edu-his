@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="LOG_PATTERN"
+              value="%d{HH:mm:ss} [${LOG_LEVEL_PATTERN:-%5p}] [%-40.40logger{39}:%4line] : %msg%n"/>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 保存日志文件的路径 -->
+        <file>logs/project.log</file>
+        <!-- 日志格式 -->
+        <encoder>
+            <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss} - %m  [%thread] [%class:%line] %n</pattern>
+        </encoder>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 日志文件名格式 -->
+            <fileNamePattern>logs/project.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>${LOG_PATTERN}</Pattern>
+        </encoder>
+    </appender>
+
+
+
+    <logger name="com.his" level="DEBUG"/>
+    <logger name="org.springframework.boot.web.embedded.tomcat" level="INFO"/>
+
+
+    <logger name="javax.activation" level="WARN" />
+    <logger name="javax.mail" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="javax.xml.bind" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="file"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

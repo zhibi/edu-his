@@ -1,0 +1,65 @@
+spring:
+#datasource 数据库连接
+  datasource:
+    username: root
+    password: 123456
+    #driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/his
+    type: com.alibaba.druid.pool.DruidDataSource
+    # druid 配置  数据库连接池
+    druid:
+        maxActive: 20
+        initialSize: 3
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        driver-class-name: com.mysql.jdbc.Driver
+  # freemarker 配置
+  freemarker:
+    cache: false
+    prefix:
+    suffix: .html
+    template-loader-path: ["classpath:/public/"]
+  resources:
+    static-locations: "classpath:/public/"
+
+
+
+
+#log日志
+logging:
+  config: classpath:logback.xml
+  # path: /logs
+
+
+#server 服务配置
+server:
+  port: 80
+  servlet:
+    path: /
+
+# mybatis
+mybatis:
+    mapper-locations: classpath:mapper/*.xml
+
+# mapper 插件
+mapper:
+    mappers: tk.mybatis.mapper.common.Mapper
+    not-empty: false
+    identity: MYSQL
+
+# mybatis 分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+###############################自定义配置
