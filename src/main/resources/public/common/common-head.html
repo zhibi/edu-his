@@ -1,0 +1,38 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>社区医院居民健康监测管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+
+    <link href="${basePath}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${basePath}/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${basePath}/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+
+    <!--checkbox-->
+    <link rel="stylesheet" href="${basePath}/H++/css/build.css">
+
+    <link href="${basePath}/H++/css/animate.min.css" rel="stylesheet">
+    <link href="${basePath}/H++/css/style.min.css" rel="stylesheet">
+
+    <script src='${basePath}/plugins/jquery/jquery-1.10.2.min.js'></script>
+    <script src="${basePath}/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="${basePath}/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="${basePath}/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="${basePath}/plugins/suggest/bootstrap-suggest.min.js"></script>
+
+    <!--富文本-->
+    <script charset="utf-8" src="${basePath}/plugins/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="${basePath}/plugins/kindeditor/lang/zh_CN.js"></script>
+</head>
+
+<script>
+    var tipMsg = "${tipMsg!}";
+    if (tipMsg.length > 0) alert(tipMsg);
+
+    $('.date-picker').datetimepicker({autoclose: true, language: 'zh-CN', minView: 2});
+</script>
+
+<#include "macro/macro-table.ftl"/>
+<#include "macro/macro-search.ftl"/>
+<#include "macro/macro-form-add.ftl"/>
+<#include "macro/macro-form-edit.ftl"/>

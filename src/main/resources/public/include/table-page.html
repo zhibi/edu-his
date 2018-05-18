@@ -1,0 +1,16 @@
+
+<ul class="bui-pagingbar-number bui-pagingbar bui-bar pagination pull-right" role="toolbar" aria-disabled="false" aria-pressed="false">
+    <li class="bui-bar-item bui-inline-block <#if !pageInfo.hasPreviousPage>disabled</#if>" aria-disabled="true" id="prev">
+        <a <#if pageInfo.hasPreviousPage> href="${url}&pageNum=${pageInfo.prePage}" </#if>>&lt;&lt;</a>
+    </li>
+
+<#list pageInfo.navigatepageNums as num>
+    <li class="bui-bar-item bui-button-number bui-inline-block  <#if pageInfo.pageNum == num>active</#if>" aria-disabled="false" id="1" aria-pressed="false">
+        <a <#if pageInfo.pageNum != num>href="${url}&pageNum=${num}" </#if>>${num}</a>
+    </li>
+</#list>
+
+    <li class="bui-bar-item bui-inline-block <#if !pageInfo.hasNextPage>disabled</#if>" aria-disabled="false" id="next">
+        <a <#if pageInfo.hasNextPage> href="${url}&pageNum=${pageInfo.nextPage}" </#if>>&gt;&gt;</a>
+    </li>
+</ul>

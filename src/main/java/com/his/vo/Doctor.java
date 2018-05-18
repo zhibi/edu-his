@@ -1,104 +1,104 @@
 package com.his.vo;
 
-public class Doctor {
-	private int id;		//id
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+/**
+ * 医生
+ */
+@Table(name = "doctor")
+public class Doctor implements Serializable {
+	@Id
+	private Integer id;		    //id
 	private String name;		//姓名
-	private int identifierType;		//证件类型
-	private String identifier;		//证件号
-	private String telphone;		//手机
-	private String phone;		//座机
-	private int gender;		//性别
-	private int age;		//年龄
-	private String birthDate;		//出生年月
+	private String card;		//证件号
+	private String phone;	    //手机
+	private String gender;		//性别
+	private Integer age;		//年龄
 	private String email;		//电子邮箱
-	private int depid;		//科室表主键
-	private int degree;	//学历
-	private String remarks;		//备注
-	private String joinTime; //入院时间
-	
-	public String getJoinTime() {
-		return joinTime;
-	}
-	public void setJoinTime(String joinTime) {
-		this.joinTime = joinTime;
-	}
-	public int getId() {
+	private String dep;		//科室
+	private String major;       //
+	private String remark;		//备注
+
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getIdentifierType() {
-		return identifierType;
+
+	public String getCard() {
+		return card;
 	}
-	public void setIdentifierType(int identifierType) {
-		this.identifierType = identifierType;
+
+	public void setCard(String card) {
+		this.card = card;
 	}
-	public String getIdentifier() {
-		return identifier;
-	}
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
-	}
-	public String getTelphone() {
-		return telphone;
-	}
-	public void setTelphone(String telphone) {
-		this.telphone = telphone;
-	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getGender() {
+
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public int getAge() {
+
+	public Integer getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+
+	public void setAge(Integer age) {
 		this.age = age;
 	}
-	public String getBirthDate() {
-		return birthDate;
-	}
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
-	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getDepid() {
-		return depid;
+
+	public String getDep() {
+		return dep;
 	}
-	public void setDepid(int depid) {
-		this.depid = depid;
+
+	public void setDep(String dep) {
+		this.dep = dep;
 	}
-	public int getDegree() {
-		return degree;
+
+	public String getMajor() {
+		return major;
 	}
-	public void setDegree(int degree) {
-		this.degree = degree;
+
+	public void setMajor(String major) {
+		this.major = major;
 	}
-	public String getRemarks() {
-		return remarks;
+
+	public String getRemark() {
+		return remark;
 	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
-	
 }

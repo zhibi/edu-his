@@ -1,0 +1,103 @@
+<div class="row border-bottom white-bg">
+    <nav class="navbar navbar-static-top navbar-fixed-top">
+        <div class="navbar-header">
+            <a href="${basePath}/index" class="navbar-brand">居民健康</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a aria-expanded="false" role="button" href="${basePath}/index">首页</a>
+                </li>
+            <#if sessionAdmin.type == 'admin'>
+
+                <li class="active">
+                    <a class="dropdown-toggle" data-toggle="dropdown">居民管理</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/list">居民列表</a></li>
+                        <li><a href="/user/add">添加分销商</a></li>
+                    </ul>
+                </li>
+
+            <li class="active">
+                <a class="dropdown-toggle" data-toggle="dropdown">通知公告管理</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/article/list/notice">通知公告列表</a></li>
+                    <li><a href="/article/add/notice">发布通知公告</a></li>
+                </ul>
+            </li>
+             <li class="active">
+                 <a class="dropdown-toggle" data-toggle="dropdown">医学知识管理</a>
+                 <ul class="dropdown-menu">
+                     <li><a href="/article/list/doctor">医学知识列表</a></li>
+                     <li><a href="/article/add/doctor">发布医学知识</a></li>
+                 </ul>
+             </li>
+
+             <li class="active">
+                 <a href="/info/list">居民健康档案</a>
+             </li>
+
+                        <li class="active">
+                            <a href="/orders/list">预约管理</a>
+                        </li>
+
+            </#if>
+
+            <#if sessionAdmin.type == 'user'>
+
+            <li class="active">
+                <a href="/info/add">录入健康信息</a>
+            </li>
+             <li class="active">
+                 <a href="/info/list">健康档案</a>
+             </li>
+                <li class="active">
+                    <a href="/doctor/list">医生列表</a>
+                </li>
+
+            <li class="active">
+                <a href="/article/list/notice">通知公告</a>
+            </li>
+             <li class="active">
+                 <a href="/article/list/doctor">医疗保健</a>
+             </li>
+
+            <li class="active">
+                <a href="/message/list">我的消息<#if read?? && read gt 0><span class="alert alert-link">${read!}</span></#if></a>
+            </li>
+            </#if>
+
+            <#if sessionAdmin.type == 'doctor'>
+
+                <li class="active">
+                    <a href="/info">个人信息</a>
+                </li>
+
+             <li class="active">
+                 <a href="/info/list">居民健康档案</a>
+             </li>
+
+            <li class="active">
+                <a href="/orders/list">我的预约</a>
+            </li>
+
+            <li class="active">
+                <a href="/message/list">我的消息<#if read?? && read gt 0><span class="alert alert-link">${read!}</span></#if></a>
+            </li>
+
+            <li class="active">
+                <a href="/article/list/notice">通知公告</a>
+            </li>
+            </#if>
+
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a href="${basePath}/modify">修改密码</a></li>
+                <li>
+
+                    <a href="${basePath}/logout">退出</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

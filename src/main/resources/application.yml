@@ -28,7 +28,7 @@ spring:
     suffix: .html
     template-loader-path: ["classpath:/public/"]
   resources:
-    static-locations: "classpath:/public/"
+    static-locations: "classpath:/static/"
 
 
 

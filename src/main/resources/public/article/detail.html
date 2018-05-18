@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<#include "../common/common-head.html"/>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+    <#include "../common/common-menu.html">
+        <div class="wrapper wrapper-content">
+            <div class="row white-bg" style="padding: 18px 0">
+                <div class="col-xs-12">
+                    <form class="form-horizontal m-t" action="${basePath}/article/update" method="post">
+                        <input type="hidden" name="id" value="${article.id}">
+                    <@formEdit labels=["标题"] names=["title"] model=article></@formEdit>
+                        <div class="form-group has-info">
+                            <label class="control-label col-sm-2">详情:</label>
+                            <div class=" col-sm-8">
+                                <textarea name="content" style="width: 100%" id="content">
+                                ${article.content!}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-8 col-xs-offset-3">
+                                <button class="btn btn-primary" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    KindEditor.ready(function (K) {
+        window.editor = K.create("#content", {
+            uploadJson: '/file/uploadFile',
+            fileManagerJson: '',
+            allowFileManager: false
+        });
+    });
+</script>
+</body>
+</html>
+

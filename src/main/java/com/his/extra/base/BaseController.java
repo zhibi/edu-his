@@ -10,6 +10,7 @@ import zhibi.utils.io.FileUtils;
 public abstract class BaseController extends AbstractController {
 
 
+    public Integer pageSize = 10;
 
     /**
      * 登录的用户
@@ -32,6 +33,6 @@ public abstract class BaseController extends AbstractController {
 
 
     protected String saveFile(MultipartFile file) {
-        return FileUtils.saveFile(file, "E:\\Projects\\School\\his\\src\\main\\resources\\public\\", "IMG");
+        return FileUtils.saveFile(file, "E:\\Projects\\School\\his\\src\\main\\resources\\static\\", "IMG");
     }
 }

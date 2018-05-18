@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<#include "common/common-head.html"/>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+    <#include "common/common-menu.html">
+        <div class="wrapper wrapper-content">
+            <div class="row" style="padding: 18px 0">
+                <div class="col-xs-12">
+
+                <#if sessionAdmin.type == 'user'>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>健康档案</h5>
+                                    <div class="ibox-tools">
+                                        <a href="/info/list">查看更多</a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <@tableHead names=["上传时间","脉搏","低血压","高血压","心率"]></@tableHead>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                         <#list infoList as item>
+                                         <#if item?index lte 10>
+                                         <tr>
+                                        <@tableBody model=item propMap={"addtime":"yyyy-MM-dd HH:mm:ss","pulse":"","blood1":"","blood2":"","heart":""}></@tableBody>
+                                         </tr>
+                                         </#if>
+                                         </#list>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>个人信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <p> 真实姓名：${sessionAdmin.name!}</p>
+                                    <p> 邮箱：${sessionAdmin.email!}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 <div class="row">
+                     <div class="col-sm-12">
+                         <div class="ibox float-e-margins">
+                             <div class="ibox-title">
+                                 <h5>脉搏</h5>
+                             </div>
+                             <div class="ibox-content">
+                                 <div style="height:400px" id="sales-charts"></div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>心率</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <div style="height:400px" id="sales-charts1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>血压</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <div style="height:400px" id="sales-charts2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </#if>
+                <#if sessionAdmin.type == 'admin' || sessionAdmin.type == 'doctor'>
+                    <h1>社区医院居民健康监测管理系统</h1>
+                </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="/plugins/flot/jquery.flot.min.js"></script>
+<script src="/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="/plugins/flot/jquery.flot.resize.min.js"></script>
+<script>
+
+    <#if sessionAdmin.type == 'user'>
+
+    var mb = [];
+    var xl = [];
+    var xyd = [];
+    var xyg = [];
+    var arr = [];
+        <#list infoList as item>
+    mb.push([${item?index}, ${item.pulse}]);
+    xl.push([${item?index}, ${item.heart}]);
+    xyd.push([${item?index}, ${item.blood1}]);
+    xyg.push([${item?index}, ${item.blood2}]);
+    arr.push([${item?index}, "${item.addtime?string('MM-dd HH')}"]);
+        </#list>
+
+
+    $('#sales-charts,#sales-charts2,#sales-charts1').css({'width': '100%', 'height': '220px'});
+    $.plot("#sales-charts", [
+        {label: "脉搏", data: mb}
+    ], {
+        hoverable: true,
+        shadowSize: 0,
+        series: {
+            lines: {show: true},
+            points: {show: true}
+        },
+        xaxis: {
+            ticks: arr
+        },
+        grid: {
+            backgroundColor: {colors: ["#fff", "#fff"]},
+            borderWidth: 1,
+            borderColor: '#555'
+        }
+    });
+
+    $.plot("#sales-charts1", [
+        {label: "心率", data: xl}
+    ], {
+        hoverable: true,
+        shadowSize: 0,
+        series: {
+            lines: {show: true},
+            points: {show: true}
+        }, xaxis: {
+            ticks: arr
+        },
+        grid: {
+            backgroundColor: {colors: ["#fff", "#fff"]},
+            borderWidth: 1,
+            borderColor: '#555'
+        }
+    });
+
+
+    $.plot("#sales-charts2", [
+        {label: "低血压", data: xyd},
+        {label: "高血压", data: xyg}
+    ], {
+        hoverable: true,
+        shadowSize: 0,
+        series: {
+            lines: {show: true},
+            points: {show: true}
+        }, xaxis: {
+            ticks: arr
+        },
+        grid: {
+            backgroundColor: {colors: ["#fff", "#fff"]},
+            borderWidth: 1,
+            borderColor: '#555'
+        }
+    });
+
+    </#if>
+
+
+</script>
+</html>

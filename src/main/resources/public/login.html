@@ -2,17 +2,11 @@
 <html>
 <head>
     <title>欢迎登录社区医院居民健康监测管理系统</title>
-	<meta charset="UTF-8">
-   <link rel="stylesheet" type="text/css" href="Css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="Css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="Css/style.css" />
-
-    <script type="text/javascript" src="/Js/form/jquery.form.js"></script>
-	<script type="text/javascript" src="/Js/form/jquery.validate.defined.js"></script>
-	<script type="text/javascript" src="/Js/form/jquery.validate.js"></script>
-	<script type="text/javascript" src="/Js/form/jquery.validation.assist.js"></script>
- 	<script type="text/javascript" src="/Js/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="/Js/ckeditor/ckeditor.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="Css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="Css/style.css"/>
+<#include "include/script.html"/>
     <style type="text/css">
         body {
             padding-top: 40px;
@@ -50,16 +44,17 @@
 </head>
 <body background="Images/logBanner.jpg">
 
-<div class="container" >
+<div class="container">
     <form class="form-signin" method="post" id="frm1" action="/login">
         <h2 class="form-signin-heading">&nbsp;&nbsp;&nbsp;登录系统</h2>
         <input type="text" name="username" class="input-block-level" placeholder="账号">
         <input type="password" name="password" class="input-block-level" placeholder="密码">
-        <input type="text" name="verify" class="input-medium" placeholder="验证码">&nbsp;&nbsp;&nbsp;
-       	<img src="/verify" alt="验证码" style="cursor:pointer;height: 32px;margin-top: -15px;" title="看不清可单击图片刷新" onclick="this.src='/verify?d='+Math.random();"/>&nbsp;&nbsp;&nbsp;&nbsp;
-        <font color="red"  value=""><span id="yzm"></span></font>
+        <input type="text" name="code" class="input-medium" placeholder="验证码">&nbsp;&nbsp;&nbsp;
+        <img src="/verify" alt="验证码" style="cursor:pointer;height: 32px;margin-top: -15px;" title="看不清可单击图片刷新"
+             onclick="this.src='/verify?d='+Math.random();"/>&nbsp;&nbsp;&nbsp;&nbsp;
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-large btn-primary" id="subm" type="submit" disabled>登录</button></p>
+            <button class="btn btn-large btn-primary" type="submit">登录</button>
+        </p>
     </form>
 
 </div>

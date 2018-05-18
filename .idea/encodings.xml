@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true">
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Bloodpressure.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Dep.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Disp.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/his/controller/DocterController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Doctor.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Drug.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/FeeManager.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/FeeProject.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Hospital.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Page.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/Role.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/User.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/his/vo/oxygen.java" charset="GBK" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -1,0 +1,25 @@
+<div class="pull-left">
+	<ul class="pagination">
+		<li>共${pageInfo.total}条数据</li>
+		<li>&nbsp;&nbsp;</li>
+		<li>共${pageInfo.pages}页</li>
+	</ul>
+</div>
+<div class="page pull-right" style="margin-right: 8px">
+	<!-- 分页插件 -->
+    <ul class="pagination pull-right no-margin">
+		<#if pageInfo.hasPreviousPage>
+		<li><a <#if pageInfo.hasPreviousPage>
+				href="${requestUrl}&pageNum=${pageInfo.prePage}" </#if>> <i
+				class="icon-double-angle-left"></i>
+		</a></li> </#if> <#if pageInfo.pages gt 1> <#list pageInfo.navigatepageNums as
+		num>
+		<li <#if pageInfo.pageNum == num>class="active"</#if>> <a <#if
+				pageInfo.pageNum != num>href="${requestUrl}&pageNum=${num}" </#if>>${num}</a>
+		</li> </#list> </#if> <#if pageInfo.hasNextPage>
+		<li><a <#if pageInfo.hasNextPage>
+				href="${requestUrl}&pageNum=${pageInfo.nextPage}" </#if>> <i
+				class="icon-double-angle-right"></i>
+		</a></li> </#if>
+	</ul>
+</div>
