@@ -101,9 +101,7 @@
 </div>
 </body>
 
-<script src="/plugins/flot/jquery.flot.min.js"></script>
-<script src="/plugins/flot/jquery.flot.pie.min.js"></script>
-<script src="/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="/Js/echarts.min.js"></script>
 <script>
 
     <#if sessionAdmin.type == 'user'>
@@ -123,63 +121,164 @@
 
 
     $('#sales-charts,#sales-charts2,#sales-charts1').css({'width': '100%', 'height': '220px'});
-    $.plot("#sales-charts", [
-        {label: "脉搏", data: mb}
-    ], {
-        hoverable: true,
-        clickable: true,
-        shadowSize: 0,
-        series: {
-            lines: {show: true},
-            points: {show: true}
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('sales-charts'));
+    var option = {
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
         },
-        xaxis: {
-            ticks: arr
+        legend: {
+            data:['脉搏']
         },
-        grid: {
-            backgroundColor: {colors: ["#fff", "#fff"]},
-            borderWidth: 1,
-            borderColor: '#555'
-        }
-    });
-
-    $.plot("#sales-charts1", [
-        {label: "心率", data: xl}
-    ], {
-        hoverable: true,
-        shadowSize: 0,
-        series: {
-            lines: {show: true},
-            points: {show: true}
-        }, xaxis: {
-            ticks: arr
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
         },
         grid: {
-            backgroundColor: {colors: ["#fff", "#fff"]},
-            borderWidth: 1,
-            borderColor: '#555'
-        }
-    });
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : arr
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name: '脉搏',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: mb
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
 
-
-    $.plot("#sales-charts2", [
-        {label: "低血压", data: xyd},
-        {label: "高血压", data: xyg}
-    ], {
-        hoverable: true,
-        shadowSize: 0,
-        series: {
-            lines: {show: true},
-            points: {show: true}
-        }, xaxis: {
-            ticks: arr
+    var myChart1 = echarts.init(document.getElementById('sales-charts1'));
+    var option1 = {
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['心率']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
         },
         grid: {
-            backgroundColor: {colors: ["#fff", "#fff"]},
-            borderWidth: 1,
-            borderColor: '#555'
-        }
-    });
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : arr
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name: '心率',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: xl
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+
+
+    var myChart2 = echarts.init(document.getElementById('sales-charts2'));
+    var option2 = {
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['低血压',"高血压"]
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : arr
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name: '低血压',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: xyd
+            },
+            {
+                name: '高血压',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data: xyg
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart2.setOption(option2);
 
     </#if>
 

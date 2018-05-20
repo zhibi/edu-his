@@ -31,6 +31,7 @@
                                 <td>${item.type?switch('user',"居民","医生")}</td>
                                 <td>
                                     <a href="${basePath}/user/detail/${item.id}">修改居民</a>
+                                    <a href="${basePath}/user/personal/${item.id}">补充档案</a>
                                     <a href="/info/add/${item.id}">录入健康信息</a>
                                     <a href="#" onclick="if(confirm('确定删除吗？')){location.href='${basePath}/user/del/${item.id}'}">删除居民</a>
                                     <a  href="#" onclick="updateType('${item.id}')">修改角色</i></a>

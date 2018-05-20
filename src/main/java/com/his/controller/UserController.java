@@ -3,7 +3,9 @@ package com.his.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.his.extra.base.BaseController;
+import com.his.mapper.PersonalMapper;
 import com.his.mapper.UserMapper;
+import com.his.vo.Personal;
 import com.his.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private PersonalMapper personalMapper;
 
     /**
      * 居民列表
@@ -101,4 +105,23 @@ public class UserController extends BaseController {
         return "redirect:list";
     }
 
+    @RequestMapping("personal/{id}")
+    public String personal(@PathVariable Integer id, Model model) {
+        Personal personal = personalMapper.selectByPrimaryKey(id);
+        if (personal == null) personal = new Personal();
+        model.addAttribute(personal);
+        model.addAttribute("userid",id);
+        return "user/personal";
+    }
+
+    @RequestMapping("updatePersonal")
+    public String updatePersonal(Personal personal,Integer userid) {
+        if (personal.getId() == null) {
+            personal.setId(userid);
+            personalMapper.insertSelective(personal);
+        } else {
+            personalMapper.updateByPrimaryKeySelective(personal);
+        }
+        return refresh();
+    }
 }

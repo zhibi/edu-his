@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地连接
-Source Server Version : 50525
+Source Server         : 本地
+Source Server Version : 50639
 Source Host           : localhost:3306
 Source Database       : his
 
 Target Server Type    : MYSQL
-Target Server Version : 50525
+Target Server Version : 50639
 File Encoding         : 65001
 
-Date: 2018-05-18 16:16:49
+Date: 2018-05-20 22:45:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -127,6 +127,32 @@ CREATE TABLE `orders` (
 -- Records of orders
 -- ----------------------------
 INSERT INTO `orders` VALUES ('1', '3', '2', '2018-05-10', 'dasdasasd', '2018-05-18 14:45:46', '2018-05-18 16:13:58', '好了');
+
+-- ----------------------------
+-- Table structure for personal
+-- ----------------------------
+DROP TABLE IF EXISTS `personal`;
+CREATE TABLE `personal` (
+  `id` int(11) NOT NULL,
+  `mask` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `adress` varchar(255) DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `telephone` varchar(255) DEFAULT NULL,
+  `btype` varchar(255) DEFAULT NULL,
+  `history` varchar(255) DEFAULT NULL,
+  `heighr` varchar(255) DEFAULT NULL,
+  `weight` double DEFAULT NULL,
+  `d` varchar(255) DEFAULT NULL,
+  `act` varchar(255) DEFAULT NULL,
+  `result` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of personal
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user
