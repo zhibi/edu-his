@@ -40,14 +40,13 @@
                         <li class="active">
                             <a href="/orders/list">预约管理</a>
                         </li>
-
+                <li class="active">
+                    <a href="/message/list">消息<#if read?? && read gt 0><span class="alert alert-link">${read!}</span></#if></a>
+                </li>
             </#if>
 
             <#if sessionAdmin.type == 'user'>
 
-            <li class="active">
-                <a href="/info/add">录入健康信息</a>
-            </li>
              <li class="active">
                  <a href="/info/list">健康档案</a>
              </li>
@@ -88,6 +87,9 @@
             <li class="active">
                 <a href="/article/list/notice">通知公告</a>
             </li>
+                <li class="active">
+                    <a href="/article/list/doctor">医疗保健宣传</a>
+                </li>
             </#if>
 
             </ul>

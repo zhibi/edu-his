@@ -4,12 +4,15 @@ import com.github.pagehelper.PageInfo;
 import com.his.extra.base.BaseController;
 import com.his.service.InfoService;
 import com.his.service.MessageService;
+import com.his.service.UserService;
 import com.his.vo.Info;
 import com.his.vo.Message;
+import com.his.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import zhibi.frame.domain.Page;
@@ -26,6 +29,8 @@ public class InfoController extends BaseController {
     private InfoService infoService;
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 列表
@@ -48,26 +53,28 @@ public class InfoController extends BaseController {
         return "info/list";
     }
 
-    @GetMapping("add")
-    public String add(Model model) {
+    @GetMapping("add/{id}")
+    public String add(Model model, @PathVariable Integer userid) {
+
+        model.addAttribute("userid", userid);
         return "info/add";
     }
 
     @PostMapping("add")
     public String add(Info info) {
         info.setAddtime(new Date());
-        info.setUserid(sessionUser().getId());
+        //info.setUserid(sessionUser().getId());
         infoService.insertSelective(info);
 
         //报警
-        if (info.getHeart() < 50) saveLog("心率太低报警");
-        if (info.getHeart() > 80) saveLog("心率太高报警");
-        if (info.getBlood1() < 50) saveLog("低血压太低报警");
-        if (info.getBlood1() > 100) saveLog("低血压太高报警");
-        if (info.getBlood2() < 50) saveLog("高血压太低报警");
-        if (info.getBlood2() > 100) saveLog("高血压太高报警");
-        if (info.getPulse() < 50) saveLog("脉搏太低报警");
-        if (info.getPulse() > 80) saveLog("脉搏太高报警");
+        if (info.getHeart() < 50) saveLog("心率太低报警", info.getUserid());
+        if (info.getHeart() > 80) saveLog("心率太高报警", info.getUserid());
+        if (info.getBlood1() < 50) saveLog("低血压太低报警", info.getUserid());
+        if (info.getBlood1() > 100) saveLog("低血压太高报警", info.getUserid());
+        if (info.getBlood2() < 50) saveLog("高血压太低报警", info.getUserid());
+        if (info.getBlood2() > 100) saveLog("高血压太高报警", info.getUserid());
+        if (info.getPulse() < 50) saveLog("脉搏太低报警", info.getUserid());
+        if (info.getPulse() > 80) saveLog("脉搏太高报警", info.getUserid());
 
         return redirect("list");
     }
@@ -76,13 +83,14 @@ public class InfoController extends BaseController {
     /**
      * 保存消息
      */
-    private void saveLog(String content) {
+    private void saveLog(String content, Integer userid) {
+        User user = userService.selectByPrimaryKey(userid);
         Message message = new Message();
         message.setContent(content);
         message.setAddtime(new Date());
-        message.setUserid(sessionUser().getId());
+        message.setUserid(userid);
         message.setSendid(1);
-        message.setSend("系统消息");
+        message.setSend("[" + user.getName() + "]" + "系统消息");
         message.setStatus(0);
         messageService.insertSelective(message);
     }

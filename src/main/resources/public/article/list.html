@@ -24,7 +24,7 @@
                             <tbody>
                             <#list pageInfo.list as item>
                             <tr>
-                                <@tableBody model=item propMap={"title":"","addtime":"yyyy-Mm-dd HH:mm:ss"}></@tableBody>
+                                <@tableBody model=item propMap={"title":"","addtime":"yyyy-MM-dd HH:mm:ss"}></@tableBody>
                                 <td>
                                     <#if sessionAdmin.type == 'admin'>
                                     <a href="${basePath}/article/detail/${item.id}">修改</a>

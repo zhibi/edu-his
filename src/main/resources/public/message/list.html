@@ -19,7 +19,7 @@
                             <tbody>
                             <#list pageInfo.list as item>
                             <tr>
-                                <@tableBody model=item propMap={"send":"","addtime":"yyyy-Mm-dd HH:mm:ss","content":""}></@tableBody>
+                                <@tableBody model=item propMap={"send":"","addtime":"yyyy-MM-dd HH:mm:ss","content":""}></@tableBody>
                                 <td>${item.status?switch(0,"未读","已读")}</td>
                                 <td>
                                     <#if item.status == 0>

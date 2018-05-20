@@ -9,6 +9,7 @@
             <div class="row white-bg" style="padding: 18px 0">
                 <div class="col-xs-12">
                     <form class="form-horizontal m-t" action="${basePath}/info/add" method="post">
+                        <input type="hidden" name="userid" value="${userid!}">
                     <@formAddNum name="pulse" label="脉搏"></@formAddNum>
                     <@formAddNum name="blood1" label="低血压"></@formAddNum>
                     <@formAddNum name="blood2" label="高血压"></@formAddNum>

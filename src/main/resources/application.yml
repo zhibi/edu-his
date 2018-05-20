@@ -2,7 +2,7 @@ spring:
 #datasource 数据库连接
   datasource:
     username: root
-    password: 123456
+    password: 1234
     #driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/his
     type: com.alibaba.druid.pool.DruidDataSource
