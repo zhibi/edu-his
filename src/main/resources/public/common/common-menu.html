@@ -11,20 +11,20 @@
             <#if sessionAdmin.type == 'admin'>
 
                 <li class="active">
-                    <a class="dropdown-toggle" data-toggle="dropdown">居民管理</a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">用户管理</a>
                     <ul class="dropdown-menu">
                         <li><a href="/user/list">居民列表</a></li>
-                        <li><a href="/user/add">添加分销商</a></li>
+                        <li><a href="/user/add">添加用户</a></li>
                     </ul>
                 </li>
 
-            <li class="active">
-                <a class="dropdown-toggle" data-toggle="dropdown">通知公告管理</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/article/list/notice">通知公告列表</a></li>
-                    <li><a href="/article/add/notice">发布通知公告</a></li>
-                </ul>
-            </li>
+           <li class="active">
+               <a class="dropdown-toggle" data-toggle="dropdown">挂号管理</a>
+               <ul class="dropdown-menu">
+                   <li><a href="/register/list">挂号列表</a></li>
+                   <li><a href="/register/add">添加挂号</a></li>
+               </ul>
+           </li>
              <li class="active">
                  <a class="dropdown-toggle" data-toggle="dropdown">医学知识管理</a>
                  <ul class="dropdown-menu">
@@ -41,7 +41,8 @@
                             <a href="/orders/list">预约管理</a>
                         </li>
                 <li class="active">
-                    <a href="/message/list">消息<#if read?? && read gt 0><span class="alert alert-link">${read!}</span></#if></a>
+                    <a href="/message/list">消息<#if read?? && read gt 0><span
+                            class="alert alert-link">${read!}</span></#if></a>
                 </li>
             </#if>
 
@@ -54,15 +55,16 @@
                     <a href="/doctor/list">医生列表</a>
                 </li>
 
-            <li class="active">
-                <a href="/article/list/notice">通知公告</a>
-            </li>
+            <#-- <li class="active">
+                 <a href="/article/list/notice">通知公告</a>
+             </li>-->
              <li class="active">
                  <a href="/article/list/doctor">医疗保健</a>
              </li>
 
             <li class="active">
-                <a href="/message/list">我的消息<#if read?? && read gt 0><span class="alert alert-link">${read!}</span></#if></a>
+                <a href="/message/list">我的消息<#if read?? && read gt 0><span
+                        class="alert alert-link">${read!}</span></#if></a>
             </li>
             </#if>
 
@@ -81,12 +83,13 @@
             </li>
 
             <li class="active">
-                <a href="/message/list">我的消息<#if read?? && read gt 0><span class="alert alert-link">${read!}</span></#if></a>
+                <a href="/message/list">我的消息<#if read?? && read gt 0><span
+                        class="alert alert-link">${read!}</span></#if></a>
             </li>
 
-            <li class="active">
-                <a href="/article/list/notice">通知公告</a>
-            </li>
+            <#-- <li class="active">
+                 <a href="/article/list/notice">通知公告</a>
+             </li>-->
                 <li class="active">
                     <a href="/article/list/doctor">医疗保健宣传</a>
                 </li>

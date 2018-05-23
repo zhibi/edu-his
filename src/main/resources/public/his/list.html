@@ -8,26 +8,27 @@
         <div class="wrapper wrapper-content">
             <div class="row white-bg" style="padding: 18px 0">
                 <div class="col-xs-12">
-
+                    <div class="form-search">
+                        <form role="form" class="form-inline clearfix" id="form" action="">
+                            <@search labels=["姓名"] names=["name"] isEnd=true></@search>
+                        </form>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
-                                <@tableHead names=["发送人","发送时间","内容","状态","操作"]></@tableHead>
+                                <@tableHead names=["姓名","社保号","联系电话","职业","证件类型","证件号","性别","年龄","初复诊","所挂科室","指定医生","备注","操作"]></@tableHead>
                             </tr>
                             </thead>
                             <tbody>
                             <#list pageInfo.list as item>
                             <tr>
-                                <@tableBody model=item propMap={"send":"","addtime":"yyyy-MM-dd HH:mm:ss","content":""}></@tableBody>
-                                <td>${item.status?switch(0,"未读","已读")}</td>
+                                <@tableBody model=item propMap={"name":"","sebao":"","phone":"","zhiye":"","cardtype":"","card":"","sex":"","age":"","type":"","dep":"","docname":"","remark":""}></@tableBody>
+
                                 <td>
-                                    <#if item.status == 0>
-                                        <a href="${basePath}/message/read/${item.id}">已读</a>
-                                        <a onclick="update2('${item.sendid}')">回复</a>
-                                        <#else>
-                                        <a href="${basePath}/message/del/${item.id}">删除</a>
-                                    </#if>
+                                    <a href="${basePath}/register/detail/${item.id}">修改</a>
+
+                                    <a href="#" onclick="if(confirm('确定删除吗？')){location.href='${basePath}/register/del/${item.id}'}">删除</a>
 
                                 </td>
                             </tr>
@@ -41,22 +42,22 @@
         </div>
     </div>
 </div>
-
-
-<div class="modal fade" tabindex="-1" role="dialog" id="model2">
+<div class="modal fade" tabindex="-1" role="dialog" id="modelType">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">发送消息</h4>
+                <h4 class="modal-title">修改居民角色</h4>
             </div>
-            <form action="/message/add" method="post">
-
+            <form action="/user/update" method="post">
                 <div class="modal-body">
-                    <input type="hidden" name="userid" id="id2">
+                    <input type="hidden" name="id" id="idType">
                     <div class="form-group">
-                        <input class="form-control" name="content" type="text" placeholder="内容">
+                        <select class="form-control" name="type">
+                            <option value="doctor">医生</option>
+                            <option value="user">居民</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -67,11 +68,10 @@
         </div>
     </div>
 </div>
-
 <script>
-    function update2(id) {
-        $("#id2").val(id);
-        $("#model2").modal("show");
+    function updateType(id) {
+        $("#idType").val(id);
+        $("#modelType").modal("show");
     }
 </script>
 </body>

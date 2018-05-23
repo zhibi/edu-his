@@ -7,9 +7,13 @@
     <property name="LOG_PATTERN"
               value="%d{HH:mm:ss} [${LOG_LEVEL_PATTERN:-%5p}] [%-40.40logger{39}:%4line] : %msg%n"/>
 
+    <property name="LOG_PATH" value="D:/FileLogs/"/>
+    <property name="PROJECT_NAME" value="his"/>
+
+
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 保存日志文件的路径 -->
-        <file>logs/project.log</file>
+        <file>${LOG_PATH}/${PROJECT_NAME}/project.log</file>
         <!-- 日志格式 -->
         <encoder>
             <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss} - %m  [%thread] [%class:%line] %n</pattern>
@@ -17,7 +21,7 @@
         <!-- 循环政策：基于时间创建日志文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 日志文件名格式 -->
-            <fileNamePattern>logs/project.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/${PROJECT_NAME}/project.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 

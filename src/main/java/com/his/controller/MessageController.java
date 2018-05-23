@@ -75,5 +75,16 @@ public class MessageController extends BaseController {
         return refresh();
     }
 
+    /**
+     * 删除消息
+     * @param id
+     * @return
+     */
+    @RequestMapping("del/{id}")
+    public String del(@PathVariable Integer id) {
+        messageService.deleteByPrimaryKey(id);
+        return refresh();
+    }
+
 
 }

@@ -109,15 +109,15 @@ public class UserController extends BaseController {
     public String personal(@PathVariable Integer id, Model model) {
         Personal personal = personalMapper.selectByPrimaryKey(id);
         if (personal == null) personal = new Personal();
+        personal.setId(id);
         model.addAttribute(personal);
-        model.addAttribute("userid",id);
         return "user/personal";
     }
 
     @RequestMapping("updatePersonal")
-    public String updatePersonal(Personal personal,Integer userid) {
-        if (personal.getId() == null) {
-            personal.setId(userid);
+    public String updatePersonal(Personal personal) {
+        Personal personal1 = personalMapper.selectByPrimaryKey(personal.getId());
+        if (personal1 == null) {
             personalMapper.insertSelective(personal);
         } else {
             personalMapper.updateByPrimaryKeySelective(personal);

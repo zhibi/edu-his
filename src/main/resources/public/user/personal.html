@@ -10,7 +10,6 @@
                 <div class="col-xs-12">
                     <form class="form-horizontal m-t" action="${basePath}/user/updatePersonal" method="post">
                         <input type="hidden" name="id" value="${personal.id!}">
-                        <input type="hidden" name="userid" value="${userid!}">
                     <@formEdit labels=["身份证号码","姓名","性别","出生年月","联系地址","联系电话","血型","药物过敏史","身高","体重","诊断时间","病况","诊断结果"]
                     names=["mask","name","sex","date","adress","telephone","btype","history","heighr","weight","d","act","result"] model=personal></@formEdit>
                         <div class="form-group">
