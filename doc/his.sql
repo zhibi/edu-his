@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
-Source Server Version : 50639
+Source Server         : 本地连接
+Source Server Version : 50525
 Source Host           : localhost:3306
 Source Database       : his
 
 Target Server Type    : MYSQL
-Target Server Version : 50639
+Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2018-05-20 22:45:10
+Date: 2018-05-23 17:02:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -147,12 +147,50 @@ CREATE TABLE `personal` (
   `d` varchar(255) DEFAULT NULL,
   `act` varchar(255) DEFAULT NULL,
   `result` varchar(255) DEFAULT NULL,
+  `sl` varchar(255) DEFAULT NULL,
+  `pf` varchar(255) DEFAULT NULL,
+  `xf` varchar(255) DEFAULT NULL,
+  `gp` varchar(255) DEFAULT NULL,
+  `fb` varchar(255) DEFAULT NULL,
+  `lbj` varchar(255) DEFAULT NULL,
+  `g` varchar(255) DEFAULT NULL,
+  `jzx` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personal
 -- ----------------------------
+INSERT INTO `personal` VALUES ('2', '6', '6', '6', '6', '6', '6', '66', '6', '6', '6', '6', '6', '6', '3', '3', '3', '3', '3', '3', '3', '3');
+
+-- ----------------------------
+-- Table structure for register
+-- ----------------------------
+DROP TABLE IF EXISTS `register`;
+CREATE TABLE `register` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `card` varchar(255) DEFAULT NULL,
+  `sebao` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `zhiye` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `dep` varchar(255) DEFAULT NULL,
+  `docid` int(11) DEFAULT NULL,
+  `docname` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `cardtype` varchar(255) DEFAULT NULL,
+  `no` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of register
+-- ----------------------------
+INSERT INTO `register` VALUES ('1', '111', '55551', '21', '31', '男', '55551', '41', '复诊', '眼科', '3', '1', '22222221', '2018-05-23 16:33:16', '护照', null);
 
 -- ----------------------------
 -- Table structure for user
