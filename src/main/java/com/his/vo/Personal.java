@@ -24,23 +24,99 @@ public class Personal implements Serializable {
     private String act;
     private String result;
 
+    private String sl;
+    private String pf;
+    private String xf;
+    private String gp;
+    private String fb;
+    private String lbj;
+    private String g;
+    private String jzx;
+
+
+    public String getSl() {
+        return sl;
+    }
+
+    public void setSl(String sl) {
+        this.sl = sl;
+    }
+
+    public String getPf() {
+        return pf;
+    }
+
+    public void setPf(String pf) {
+        this.pf = pf;
+    }
+
+    public String getXf() {
+        return xf;
+    }
+
+    public void setXf(String xf) {
+        this.xf = xf;
+    }
+
+    public String getGp() {
+        return gp;
+    }
+
+    public void setGp(String gp) {
+        this.gp = gp;
+    }
+
+    public String getFb() {
+        return fb;
+    }
+
+    public void setFb(String fb) {
+        this.fb = fb;
+    }
+
+    public String getLbj() {
+        return lbj;
+    }
+
+    public void setLbj(String lbj) {
+        this.lbj = lbj;
+    }
+
+    public String getG() {
+        return g;
+    }
+
+    public void setG(String g) {
+        this.g = g;
+    }
+
+    public String getJzx() {
+        return jzx;
+    }
+
+    public void setJzx(String jzx) {
+        this.jzx = jzx;
+    }
+
     /**
      * 字段 列名 数据类型 描述
-     1 Cmask Varchar(20) 身份证号码
-     2 Cname  Varchar（5） 姓名
-     3 Dsex Varchar（2） 性别
-     4 Cdate Date 出生年月
-     5 Cadress Varchar（30） 联系地址
-     6 Ctelephone Int（11） 联系电话
-     7 Cbtype Varchar（4） 血型
-     8 Chistory Varchar（50） 药物过敏史
-     9 Cheighr height（3，2） 身高
-     10 Cweight weight（3,1） 体重
-
-     12 Cd Date 诊断时间
-     13 Cact Varchar（50） 病况
-     14 Cresult Varchar（50） 诊断结果
+     * 1 Cmask Varchar(20) 身份证号码
+     * 2 Cname  Varchar（5） 姓名
+     * 3 Dsex Varchar（2） 性别
+     * 4 Cdate Date 出生年月
+     * 5 Cadress Varchar（30） 联系地址
+     * 6 Ctelephone Int（11） 联系电话
+     * 7 Cbtype Varchar（4） 血型
+     * 8 Chistory Varchar（50） 药物过敏史
+     * 9 Cheighr height（3，2） 身高
+     * 10 Cweight weight（3,1） 体重
+     * <p>
+     * 12 Cd Date 诊断时间
+     * 13 Cact Varchar（50） 病况
+     * 14 Cresult Varchar（50） 诊断结果
      */
+
+
 
     public Integer getId() {
         return id;

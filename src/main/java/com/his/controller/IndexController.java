@@ -2,14 +2,12 @@ package com.his.controller;
 
 import com.his.extra.base.BaseController;
 import com.his.extra.context.Constant;
+import com.his.mapper.PersonalMapper;
 import com.his.service.DoctorService;
 import com.his.service.InfoService;
 import com.his.service.MessageService;
 import com.his.service.UserService;
-import com.his.vo.Doctor;
-import com.his.vo.Info;
-import com.his.vo.Message;
-import com.his.vo.User;
+import com.his.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +32,8 @@ public class IndexController extends BaseController {
     private DoctorService doctorService;
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private PersonalMapper personalMapper;
 
 
     @GetMapping("login")
@@ -56,13 +56,17 @@ public class IndexController extends BaseController {
             Example example = Example.getInstance().addParam("userid", sessionUser().getId()).addOrder("addtime", ExampleType.OrderType.DESC);
             List<Info> infoList = infoService.selectByExample(example);
             model.addAttribute("infoList", infoList);
+
+            Personal personal = personalMapper.selectByPrimaryKey(sessionUser().getId());
+            if(personal == null) personal = new Personal();
+            model.addAttribute("personal",personal);
         }
 
         Message message = new Message();
         message.setStatus(0);
         message.setUserid(sessionUser().getId());
         int count = messageService.selectCount(message);
-        session.setAttribute("read",count);
+        session.setAttribute("read", count);
 
         return "index";
     }

@@ -12,6 +12,7 @@ public class Register implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String no;
     private String name;
     private String cardtype;
     private String card;
@@ -26,6 +27,14 @@ public class Register implements Serializable {
     private String docname;
     private String remark;
     private Date addtime;
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
 
     public Date getAddtime() {
         return addtime;

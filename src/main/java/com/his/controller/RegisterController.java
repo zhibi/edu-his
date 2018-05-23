@@ -39,7 +39,9 @@ public class RegisterController extends BaseController {
     @RequestMapping("list")
     public String list(Register register, @RequestParam(defaultValue = "1") Integer pageNum, Model model) {
         Example example = Example.getInstance();
-        example.addParam("name", register.getName(), ExampleType.Operation.LIKE);
+        example.addParam("name", register.getName(), ExampleType.Operation.LIKE)
+                .addParam("dep", register.getDep(), ExampleType.Operation.LIKE)
+                .addParam("no", register.getNo(), ExampleType.Operation.LIKE);
         PageHelper.startPage(pageNum, pageSize);
         PageInfo<Register> pageInfo = new PageInfo<>(registerMapper.selectByExample(example), 5);
         model.addAttribute(pageInfo);
