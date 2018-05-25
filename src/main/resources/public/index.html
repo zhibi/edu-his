@@ -52,58 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>档案</h5>
-                                </div>
-                                <div class="ibox-content">
-                                    <p> 身份证号码：${personal.mask!}</p>
-                                    <p> 姓名：${personal.name!}</p>
-                                    <p> 性别：${personal.sex!}</p>
-                                    <p> 出生年月：${personal.date!}</p>
-                                    <p> 联系地址：${personal.adress!}</p>
-                                    <p> 联系电话：${personal.telephone!}</p>
-                                    <p> 血型：${personal.btype!}</p>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>档案</h5>
-                                </div>
-                                <div class="ibox-content">
-                                    <p> 药物过敏史：${personal.history!}</p>
-                                    <p> 身高：${personal.heighr!}</p>
-                                    <p> 体重：${personal.weight!}</p>
-                                    <p> 诊断时间：${personal.d!}</p>
-                                    <p> 病况：${personal.act!}</p>
-                                    <p> 诊断结果：${personal.result!}</p>
-                                    <p> 视力：${personal.sl!}</p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>健康</h5>
-                                </div>
-                                <div class="ibox-content">
-                                    <p> 皮肤：${personal.pf!}</p>
-                                    <p> 心肺：${personal.xf!}</p>
-                                    <p> 肝脾：${personal.gp!}</p>
-                                    <p> 腹部：${personal.fb!}</p>
-                                    <p> 淋巴结：${personal.lbj!}</p>
-                                    <p> 肝功能：${personal.g!}</p>
-                                    <p> 甲状腺：${personal.jzx!}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                  <div class="row">
                      <div class="col-sm-12">
                          <div class="ibox float-e-margins">
@@ -142,31 +91,6 @@
                         </div>
                     </div>
                 </div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>血压血氧传感器监测数据</h5>
-                                </div>
-                                <div class="ibox-content">
-                                    <div style="height:400px" id="main"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>脉搏传感器监测数据</h5>
-                                </div>
-                                <div class="ibox-content">
-                                    <div style="height:400px" id="main2"></div> </div>
-                            </div>
-                        </div>
-                    </div>
                 </#if>
                 <#if sessionAdmin.type == 'admin' || sessionAdmin.type == 'doctor'>
                     <h1>社区医院居民健康监测管理系统</h1>
@@ -247,15 +171,10 @@
     var option1 = {
         tooltip : {
             trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
-                }
-            }
+
         },
         legend: {
-            data:['血氧 ']
+            data:['血氧']
         },
         toolbox: {
             feature: {
@@ -271,7 +190,6 @@
         xAxis : [
             {
                 type : 'category',
-                boundaryGap : false,
                 data : arr
             }
         ],
@@ -282,7 +200,7 @@
         ],
         series : [
             {
-                name: '心率',
+                name: '血氧',
                 type: 'line',
                 stack: '总量',
                 data: xl

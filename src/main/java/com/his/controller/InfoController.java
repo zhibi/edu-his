@@ -67,14 +67,14 @@ public class InfoController extends BaseController {
         infoService.insertSelective(info);
 
         //报警
-        if (info.getHeart() < 50) saveLog("心率太低报警", info.getUserid());
-        if (info.getHeart() > 80) saveLog("心率太高报警", info.getUserid());
-        if (info.getBlood1() < 50) saveLog("低血压太低报警", info.getUserid());
-        if (info.getBlood1() > 100) saveLog("低血压太高报警", info.getUserid());
-        if (info.getBlood2() < 50) saveLog("高血压太低报警", info.getUserid());
-        if (info.getBlood2() > 100) saveLog("高血压太高报警", info.getUserid());
-        if (info.getPulse() < 50) saveLog("脉搏太低报警", info.getUserid());
-        if (info.getPulse() > 80) saveLog("脉搏太高报警", info.getUserid());
+        if (info.getHeart() < 90) saveLog("血氧太低报警", info.getUserid());
+        if (info.getHeart() > 100) saveLog("血氧太高报警", info.getUserid());
+        if (info.getBlood1() < 60) saveLog("低血压太低报警", info.getUserid());
+        if (info.getBlood1() > 90) saveLog("低血压太高报警", info.getUserid());
+        if (info.getBlood2() < 90) saveLog("高血压太低报警", info.getUserid());
+        if (info.getBlood2() > 140) saveLog("高血压太高报警", info.getUserid());
+        if (info.getPulse() < 60) saveLog("脉搏太低报警", info.getUserid());
+        if (info.getPulse() > 100) saveLog("脉搏太高报警", info.getUserid());
 
         return redirect("list");
     }

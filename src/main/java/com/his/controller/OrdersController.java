@@ -7,6 +7,7 @@ import com.his.vo.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import zhibi.frame.domain.Page;
@@ -42,5 +43,11 @@ public class OrdersController extends BaseController {
     public String update(Orders orders) {
         ordersService.updateByPrimaryKeySelective(orders);
         return redirect("list");
+    }
+
+    @RequestMapping("del/{id}")
+    public String del(@PathVariable Integer id) {
+        ordersService.deleteByPrimaryKey(id);
+        return refresh();
     }
 }

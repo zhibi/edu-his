@@ -5,11 +5,11 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a aria-expanded="false" role="button" href="${basePath}/index">首页</a>
-                </li>
-            <#if sessionAdmin.type == 'admin'>
 
+            <#if sessionAdmin.type == 'admin'>
+<li class="active">
+    <a aria-expanded="false" role="button" href="${basePath}/index">首页</a>
+</li>
                 <li class="active">
                     <a class="dropdown-toggle" data-toggle="dropdown">用户管理</a>
                     <ul class="dropdown-menu">
@@ -47,6 +47,18 @@
             </#if>
 
             <#if sessionAdmin.type == 'user'>
+            <li class="active">
+                <a aria-expanded="false" role="button" href="${basePath}/index">健康档案</a>
+            </li>
+
+            <li class="active">
+                <a aria-expanded="false" role="button" href="${basePath}/index-1">实时数据监测</a>
+            </li>
+
+            <li class="active">
+                <a aria-expanded="false" role="button" href="${basePath}/index-2">个人档案</a>
+            </li>
+
 
              <li class="active">
                  <a href="/info/list">健康档案</a>

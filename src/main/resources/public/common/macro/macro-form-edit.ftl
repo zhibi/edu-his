@@ -1,9 +1,9 @@
 <#macro formEdit labels names model>
     <#list labels as item>
     <div class="form-group has-info">
-        <label class="control-label col-sm-2">${item}:</label>
+        <label class="control-label  col-sm-2">${item}:</label>
         <div class=" col-sm-8">
-            <input class="form-control" name="${names[item?index]}" value="${model[names[item?index]]!}" type="text"
+            <input class="form-control input-sm" name="${names[item?index]}" value="${model[names[item?index]]!}" type="text"
                    required>
         </div>
     </div>
@@ -15,7 +15,7 @@
     <div class="form-group has-info">
         <label class="control-label col-sm-2">${item}:</label>
         <div class=" col-sm-8">
-            <input class="form-control" name="${names[item?index]}" value="${model[names[item?index]]!}" type="text">
+            <input class="form-control input-sm" name="${names[item?index]}" value="${model[names[item?index]]!}" type="text">
         </div>
     </div>
     </#list>
@@ -44,7 +44,7 @@
 <div class="form-group has-info">
     <label class="control-label col-sm-2">${label!}:</label>
     <div class=" col-sm-8">
-        <select class="form-control col-sm-2" name="${name!}">
+        <select class="form-control input-sm col-sm-2" name="${name!}">
             <#list valueMap?keys as item>
                 <option <#if item=model[name]!?string>selected</#if> value="${item}">${valueMap[item]!}</option>
             </#list>

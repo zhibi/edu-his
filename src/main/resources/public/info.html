@@ -10,7 +10,7 @@
                 <div class="col-xs-12">
                     <form class="form-horizontal m-t" action="${basePath}/update" method="post">
                         <input type="hidden" name="id" value="${sessionAdmin.id}">
-                    <@formEdit labels=["姓名","证件号","手机","年龄","电子邮箱","科室","主治方向","备注"] names=["name","card","phone","age","email","dep","major","remark"] model=doctor></@formEdit>
+                    <@formEdit labels=["姓名","学历","手机","年龄","电子邮箱","科室","主治方向","备注"] names=["name","card","phone","age","email","dep","major","remark"] model=doctor></@formEdit>
                         <@formEditSel label="性别" name="gender" valueMap={"男":"男","女":"女"} model=doctor></@formEditSel>
 
                         <div class="form-group">

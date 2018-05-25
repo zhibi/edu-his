@@ -56,10 +56,6 @@ public class IndexController extends BaseController {
             Example example = Example.getInstance().addParam("userid", sessionUser().getId()).addOrder("addtime", ExampleType.OrderType.DESC);
             List<Info> infoList = infoService.selectByExample(example);
             model.addAttribute("infoList", infoList);
-
-            Personal personal = personalMapper.selectByPrimaryKey(sessionUser().getId());
-            if(personal == null) personal = new Personal();
-            model.addAttribute("personal",personal);
         }
 
         Message message = new Message();
@@ -69,6 +65,24 @@ public class IndexController extends BaseController {
         session.setAttribute("read", count);
 
         return "index";
+    }
+
+    @RequestMapping({"index-2"})
+    public String index2(Model model) {
+        model.addAttribute("tipMsg", session.getAttribute("tipMsg"));
+        session.removeAttribute("tipMsg");
+
+        Personal personal = personalMapper.selectByPrimaryKey(sessionUser().getId());
+        if (personal == null) personal = new Personal();
+        model.addAttribute("personal", personal);
+
+        return "index-2";
+    }
+
+    @RequestMapping({"index-1"})
+    public String index1(Model model) {
+
+        return "index-1";
     }
 
     /**

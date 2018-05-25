@@ -25,6 +25,8 @@
                                         <a onclick="update2('${item.id}')">标记</a>
                                     </#if>
 
+                                    <a href="#" onclick="if(confirm('确定删除吗？')){location.href='${basePath}/orders/del/${item.id}'}">删除</a>
+
                                 </td>
                             </tr>
                             </#list>
