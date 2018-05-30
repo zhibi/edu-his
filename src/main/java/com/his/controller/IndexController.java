@@ -57,6 +57,11 @@ public class IndexController extends BaseController {
             List<Info> infoList = infoService.selectByExample(example);
             model.addAttribute("infoList", infoList);
         }
+        if (sessionUser().getType().equals("doctor")) {
+            Doctor doctor = doctorService.selectByPrimaryKey(sessionUser().getId());
+            model.addAttribute("doctor",doctor);
+        }
+
 
         Message message = new Message();
         message.setStatus(0);

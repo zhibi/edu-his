@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<#include "../common/common-head.html"/>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+    <#include "../common/common-menu.html">
+        <div class="wrapper wrapper-content">
+            <div class="row white-bg" style="padding: 18px 0">
+                <div class="col-xs-12">
+                    <div class="form-search">
+                        <form role="form" class="form-inline clearfix" id="form" action="">
+                            <@search labels=["姓名","科室"] names=["name","dep"] isEnd=true></@search>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <@tableHead names=["姓名","科室","主治方向","周一","周二","周三","周四","周五","周六","周日","操作"]></@tableHead>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <#list pageInfo.list as item>
+                            <tr>
+                                <@tableBody model=item propMap={"name":"","dep":"","major":"","w1":"","w2":"","w3":"","w4":"","w5":"","w6":"","w7":""}></@tableBody>
+                                <td>
+                                    <a href="${basePath}/doctor/orderw/${item.id}">修改值班</a>
+                                </td>
+                            </tr>
+                            </#list>
+                            </tbody>
+                        </table>
+                    <#include "../common/table-page.html"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

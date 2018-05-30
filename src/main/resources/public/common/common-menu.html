@@ -44,6 +44,10 @@
                     <a href="/message/list">消息<#if read?? && read gt 0><span
                             class="alert alert-link">${read!}</span></#if></a>
                 </li>
+
+            <li class="active">
+                <a aria-expanded="false" role="button" href="${basePath}/doctor/wlist">值班安排</a>
+            </li>
             </#if>
 
             <#if sessionAdmin.type == 'user'>
@@ -99,9 +103,9 @@
                         class="alert alert-link">${read!}</span></#if></a>
             </li>
 
-            <#-- <li class="active">
-                 <a href="/article/list/notice">通知公告</a>
-             </li>-->
+            <li class="active">
+                <a href="/record/list">随访记录</a>
+            </li>
                 <li class="active">
                     <a href="/article/list/doctor">医疗保健宣传</a>
                 </li>

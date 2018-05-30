@@ -45,6 +45,24 @@ public class DocterController extends BaseController {
         return "doctor/list";
     }
 
+    @RequestMapping("wlist")
+    public String wlist(Doctor doctor, Page page, Model model) {
+        Example example = Example.getInstance()
+                .addParam("name", doctor.getName(), ExampleType.Operation.LIKE)
+                .addParam("dep", doctor.getDep(), ExampleType.Operation.LIKE)
+                .addOrder("id", ExampleType.OrderType.DESC);
+        PageInfo<Doctor> pageInfo = doctorService.selectByExample(example, page);
+        setModelAttribute(model, pageInfo);
+        return "doctor/wlist";
+    }
+
+    @RequestMapping("orderw/{id}")
+    public String orderw(@PathVariable Integer id, Model model) {
+        Doctor doctor = doctorService.selectByPrimaryKey(id);
+        model.addAttribute(doctor);
+        return "doctor/detail";
+    }
+
     //预约
     @RequestMapping("order/{id}")
     public String order(@PathVariable Integer id, Model model) {
@@ -60,5 +78,11 @@ public class DocterController extends BaseController {
         orders.setUserid(sessionUser().getId());
         ordersService.insertSelective(orders);
         return redirect("/index");
+    }
+
+    @RequestMapping("update")
+    public String update(Doctor doctor){
+        doctorService.updateByPrimaryKeySelective(doctor);
+        return "wlist";
     }
 }

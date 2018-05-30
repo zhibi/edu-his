@@ -92,14 +92,53 @@
                     </div>
                 </div>
                 </#if>
-                <#if sessionAdmin.type == 'admin' || sessionAdmin.type == 'doctor'>
+                <#if sessionAdmin.type == 'admin'>
                     <h1>社区医院居民健康监测管理系统</h1>
                 </#if>
+                     <#if sessionAdmin.type == 'doctor'>
+                     <div class="row">
+                         <div class="col-sm-6">
+                             <div class="ibox float-e-margins">
+                                 <div class="ibox-title">
+                                     <h5>个人信息</h5>
+                                 </div>
+                                 <div class="ibox-content">
+                                     <p> 姓名：${doctor.name!}</p>
+                                     <p> 学历：${doctor.card!}</p>
+                                     <p> 手机：${doctor.phone!}</p>
+                                     <p> 年龄：${doctor.age!}</p>
+                                     <p> 性别：${doctor.gender!}</p>
+                                     <p> 电子邮箱：${doctor.email!}</p>
+                                     <p> 科室：${doctor.dep!}</p>
+                                     <p> 主治方向：${doctor.major!}</p>
+
+                                 </div>
+                             </div>
+                         </div>
+
+                         <div class="col-sm-6">
+                             <div class="ibox float-e-margins">
+                                 <div class="ibox-title">
+                                     <h5>值班安排</h5>
+                                 </div>
+                                 <div class="ibox-content">
+                                     <p> 周一：${doctor.w1!}</p>
+                                     <p> 周二：${doctor.w2!}</p>
+                                     <p> 周三：${doctor.w3!}</p>
+                                     <p> 周四：${doctor.w4!}</p>
+                                     <p> 周五：${doctor.w5!}</p>
+                                     <p> 周六：${doctor.w6!}</p>
+                                     <p> 周日：${doctor.w7!}</p>
+
+                                 </div>
+                             </div>
+                         </div>
+                     </#if>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 
 <script src="/Js/echarts.min.js"></script>
@@ -126,12 +165,12 @@
     var myChart = echarts.init(document.getElementById('sales-charts'));
 
     var option = {
-        tooltip : {
+        tooltip: {
             trigger: 'axis',
 
         },
         legend: {
-            data:['脉搏']
+            data: ['脉搏']
         },
         toolbox: {
             feature: {
@@ -144,18 +183,18 @@
             bottom: '3%',
             containLabel: true
         },
-        xAxis : [
+        xAxis: [
             {
-                type : 'category',
-                data : arr
+                type: 'category',
+                data: arr
             }
         ],
-        yAxis : [
+        yAxis: [
             {
-                type : 'value'
+                type: 'value'
             }
         ],
-        series : [
+        series: [
             {
                 name: '脉搏',
                 type: 'line',
@@ -169,12 +208,12 @@
 
     var myChart1 = echarts.init(document.getElementById('sales-charts1'));
     var option1 = {
-        tooltip : {
+        tooltip: {
             trigger: 'axis',
 
         },
         legend: {
-            data:['血氧']
+            data: ['血氧']
         },
         toolbox: {
             feature: {
@@ -187,18 +226,18 @@
             bottom: '3%',
             containLabel: true
         },
-        xAxis : [
+        xAxis: [
             {
-                type : 'category',
-                data : arr
+                type: 'category',
+                data: arr
             }
         ],
-        yAxis : [
+        yAxis: [
             {
-                type : 'value'
+                type: 'value'
             }
         ],
-        series : [
+        series: [
             {
                 name: '血氧',
                 type: 'line',
@@ -213,7 +252,7 @@
 
     var myChart2 = echarts.init(document.getElementById('sales-charts2'));
     var option2 = {
-        tooltip : {
+        tooltip: {
             trigger: 'axis',
             axisPointer: {
                 type: 'cross',
@@ -223,7 +262,7 @@
             }
         },
         legend: {
-            data:['低血压',"高血压"]
+            data: ['低血压', "高血压"]
         },
         toolbox: {
             feature: {
@@ -236,19 +275,19 @@
             bottom: '3%',
             containLabel: true
         },
-        xAxis : [
+        xAxis: [
             {
-                type : 'category',
-                boundaryGap : false,
-                data : arr
+                type: 'category',
+                boundaryGap: false,
+                data: arr
             }
         ],
-        yAxis : [
+        yAxis: [
             {
-                type : 'value'
+                type: 'value'
             }
         ],
-        series : [
+        series: [
             {
                 name: '低血压',
                 type: 'line',
@@ -284,7 +323,7 @@
             }
         },
         legend: {
-            data:['血氧', '血压']
+            data: ['血氧', '血压']
         },
         toolbox: {
             show: true,
@@ -303,12 +342,12 @@
             {
                 type: 'category',
                 boundaryGap: true,
-                data: (function (){
+                data: (function () {
                     var now = new Date();
                     var res = [];
                     var len = 10;
                     while (len--) {
-                        res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                        res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
                         now = new Date(now - 2000);
                     }
                     return res;
@@ -319,7 +358,7 @@
                 type: 'category',
                 boundaryGap: true,
 
-                data: (function (){
+                data: (function () {
                     var res = [];
                     var len = 10;
                     while (len--) {
@@ -351,12 +390,12 @@
         ],
         series: [
             {
-                name:'血压',
-                type:'bar',
+                name: '血压',
+                type: 'bar',
                 xAxisIndex: 1,
                 yAxisIndex: 1,
 
-                data:(function (){
+                data: (function () {
                     var res = [];
                     var len = 10;
                     while (len--) {
@@ -369,13 +408,13 @@
 
 
             {
-                name:'血氧',
-                type:'line',
-                data:(function (){
+                name: '血氧',
+                type: 'line',
+                data: (function () {
                     var res = [];
                     var len = 0;
                     while (len < 10) {
-                        res.push((Math.random()*10 + 85).toFixed(1) - 0);
+                        res.push((Math.random() * 10 + 85).toFixed(1) - 0);
                         len++;
                     }
                     return res;
@@ -386,18 +425,18 @@
         ]
     };
 
-    var app= 10;
-    setInterval(function (){
-        axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    var app = 10;
+    setInterval(function () {
+        axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
 
         var data0 = option.series[0].data;
         var data1 = option.series[1].data;
 
-        var a=data0.shift();
-        data0.push(Math.round(Math.random() * 40 +  90));
+        var a = data0.shift();
+        data0.push(Math.round(Math.random() * 40 + 90));
 
-        var b= data1.shift();
-        data1.push((Math.random() *10 + 85).toFixed(1) - 0);
+        var b = data1.shift();
+        data1.push((Math.random() * 10 + 85).toFixed(1) - 0);
 
         option.xAxis[0].data.shift();
         option.xAxis[0].data.push(axisData);
@@ -405,7 +444,8 @@
         option.xAxis[1].data.push(app++);
         //  myChart.setOption(option);
 
-        myChart4.setOption(option);}, 2100);
+        myChart4.setOption(option);
+    }, 2100);
 
     // 使用刚指定的配置项和数据显示图表
 
@@ -427,10 +467,10 @@
         //res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
         //now = new Date(now - 2000);
         //now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/');
-        now = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+        now = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
         date.push(now);
         // data.push((Math.random() - 0.4) * 5 + data[data.length - 1]);
-        data.push((Math.random() *10 + 70).toFixed(1) - 0);
+        data.push((Math.random() * 10 + 70).toFixed(1) - 0);
 
         if (shift) {
             date.shift();
@@ -460,9 +500,9 @@
         },
         series: [
             {
-                name:'成交',
-                type:'line',
-                smooth:true,
+                name: '成交',
+                type: 'line',
+                smooth: true,
                 symbol: 'none',
                 stack: 'a',
 
@@ -478,7 +518,7 @@
                 data: date
             },
             series: [{
-                name:'脉搏数据',
+                name: '脉搏数据',
                 data: data
             }]
         });

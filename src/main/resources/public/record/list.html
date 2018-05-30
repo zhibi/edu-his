@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<#include "../common/common-head.html"/>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+    <#include "../common/common-menu.html">
+        <div class="wrapper wrapper-content">
+            <div class="row white-bg" style="padding: 18px 0">
+                <div class="col-xs-12">
+                    <div class="form-search">
+                        <div class="input-group ">
+                            <a class="btn btn-success" href="/record/add">记录随访</a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <@tableHead names=["随访的居民","随访时间","随访备注","下次倒计时"]></@tableHead>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <#list pageInfo.list as item>
+                            <tr>
+                                <@tableBody model=item propMap={"user":"","addtime":"yyyy-MM-dd HH:mm:ss","remark":"","data":""}></@tableBody>
+                            </tr>
+                            </#list>
+                            </tbody>
+                        </table>
+                    <#include "../common/table-page.html"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2018-05-24 10:48:18
+Date: 2018-05-30 13:59:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,13 +49,20 @@ CREATE TABLE `doctor` (
   `dep` varchar(255) DEFAULT NULL,
   `major` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
+  `w1` varchar(255) DEFAULT NULL,
+  `w2` varchar(255) DEFAULT NULL,
+  `w3` varchar(255) DEFAULT NULL,
+  `w4` varchar(255) DEFAULT NULL,
+  `w5` varchar(255) DEFAULT NULL,
+  `w6` varchar(255) DEFAULT NULL,
+  `w7` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of doctor
 -- ----------------------------
-INSERT INTO `doctor` VALUES ('3', '1', '1', '1', '女', '1', '1', '1', '1', '1');
+INSERT INTO `doctor` VALUES ('3', '1', '1', '1', '女', '1', '1', '1', '1', '1', '12333', '33333', '333333333', '3333333333', '3333333333333', '333333333333333', '333333333333333333');
 
 -- ----------------------------
 -- Table structure for info
@@ -162,6 +169,27 @@ CREATE TABLE `personal` (
 -- Records of personal
 -- ----------------------------
 INSERT INTO `personal` VALUES ('2', '6', '6', '6', '6', '6', '6', '66', '6', '6', '6', '6', '6', '6', '3', '3', '3', '3', '3', '3', '3', '3');
+
+-- ----------------------------
+-- Table structure for record
+-- ----------------------------
+DROP TABLE IF EXISTS `record`;
+CREATE TABLE `record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) DEFAULT NULL,
+  `docid` int(11) DEFAULT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `data` int(255) DEFAULT NULL,
+  `user` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of record
+-- ----------------------------
+INSERT INTO `record` VALUES ('1', '2', '3', '2018-05-15 13:03:39', 'czxczxcz', '15', '测试1');
+INSERT INTO `record` VALUES ('2', '2', '3', '2018-05-30 13:04:33', 'fff', '30', '测试1');
 
 -- ----------------------------
 -- Table structure for register
