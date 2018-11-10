@@ -1,5 +1,6 @@
 buildscript{
     repositories {
+        flatDir { dirs "$rootDir/libs" }
         maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         mavenCentral()
         jcenter()
@@ -40,6 +41,7 @@ ext {
 
 //仓库地址
 repositories {
+    flatDir { dirs "$rootDir/libs" }
     mavenLocal()
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     mavenCentral()
@@ -70,8 +72,8 @@ dependencies {
     compile "joda-time:joda-time:$ver.joda_time"
 
     //zhibi
-    compile "zhibi:zhibi-utils:$ver.zhibi_utils"
-    compile "zhibi:zhibi-commons:$ver.zhibi_commons"
-    compile "zhibi:zhibi-frame:$ver.zhibi_frame"
+    compile "zhibi:zhibi-utils:+"
+    compile "zhibi:zhibi-commons:+"
+    compile "zhibi:zhibi-frame:+"
 
 }
