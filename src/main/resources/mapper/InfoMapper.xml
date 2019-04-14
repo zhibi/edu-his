@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.his.mapper.InfoMapper">
+<mapper namespace="edu.his.mapper.InfoMapper">
 
     <sql id="Example_Where_Clause">
         <where>
@@ -35,7 +35,7 @@
         </where>
     </sql>
 
-    <select id="selectPoByExample" resultType="com.his.vo.Info">
+    <select id="selectPoByExample" resultType="edu.his.vo.Info">
         select i.*,u.name username from info i
         left join user u on u.id = i.userid
         <if test="_parameter != null">

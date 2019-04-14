@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.his.mapper.OrdersMapper">
+<mapper namespace="edu.his.mapper.OrdersMapper">
 
     <sql id="Example_Where_Clause">
         <where>
@@ -35,7 +35,7 @@
         </where>
     </sql>
 
-    <select id="selectPoByExample" resultType="com.his.vo.Orders">
+    <select id="selectPoByExample" resultType="edu.his.vo.Orders">
         select o.*,u.name username,d.name doctorname from orders o
         left join user u on u.id = o.userid
         left join user d on d.id = o.doctorid
